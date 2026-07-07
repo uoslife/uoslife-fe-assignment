@@ -34,30 +34,32 @@ function App() {
         <header className="header-wrapper">
           <div className="header-left-wrapper">
             <div className="header-title">UOSLIFE FE</div>
-            <div className="header-menu">
+            <nav className="header-menu">
               <h4>홈</h4>
               <h4>메뉴1</h4>
               <h4>메뉴2</h4>
-            </div>
+            </nav>
           </div>
-          <div className="header-icon">
+          <nav className="header-icon">
             <FaGithub /> <FaInstagram /> <MdEdit />
-          </div>
+          </nav>
         </header>
-        <div className="background">
+        <section className="background">
           <img src={Background} />
           <div className="content">
             <h2>시대생 프론트 아자아자</h2>
-            <div
+            <a
               className="button-wrapper"
-              onClick={() => window.open("https://uoslife.team/", "_blank")}
+              href="https://uoslife.team/"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <FaExternalLinkAlt />
               바로가기
-            </div>
+            </a>
           </div>
-        </div>
-        <div className="infbanner-wrapper">
+        </section>
+        <section className="infbanner-wrapper">
           <h2>무한 배너</h2>
           <ul className="infbanner">
             {[...images, ...images].map((img, idx) => (
@@ -66,8 +68,8 @@ function App() {
               </li>
             ))}
           </ul>
-        </div>
-        <div className="scrollview-wrapper">
+        </section>
+        <section className="scrollview-wrapper">
           <h2>스크롤 뷰</h2>
           <button className="left-btn" onClick={scrollLeft}>
             ◀
@@ -82,7 +84,7 @@ function App() {
           <button className="right-btn" onClick={scrollRight}>
             ▶
           </button>
-        </div>
+        </section>
       </div>
     </>
   );
