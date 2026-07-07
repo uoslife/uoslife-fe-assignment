@@ -129,8 +129,11 @@ export const ButtonWrapper = styled.a`
   color: ${({ theme }) => theme.colors.black};
   cursor: pointer;
   text-decoration: none;
+  transition: opacity 0.2s ease;
+  &:hover {
+    opacity: 0.7;
+  }
 `;
-
 export const InfBannerWrapper = styled.section`
   width: 100%;
   padding: 40px 0px;
