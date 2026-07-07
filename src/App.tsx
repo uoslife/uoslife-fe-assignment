@@ -10,7 +10,8 @@ import img5 from "./assets/image/5.jpg";
 import img6 from "./assets/image/6.jpg";
 import img7 from "./assets/image/7.jpg";
 import img8 from "./assets/image/8.jpg";
-import "./App.css";
+import * as S from "./app.styles";
+
 const images = [img1, img2, img3, img4, img5, img6, img7, img8];
 
 function App() {
@@ -28,63 +29,67 @@ function App() {
       behavior: "smooth",
     });
   };
+
   return (
     <>
+      <S.GlobalStyle />
       <div>
-        <header className="header-wrapper">
-          <div className="header-left-wrapper">
-            <div className="header-title">UOSLIFE FE</div>
-            <nav className="header-menu">
+        <S.HeaderWrapper>
+          <S.HeaderLeftWrapper>
+            <S.HeaderTitle>UOSLIFE FE</S.HeaderTitle>
+            <S.HeaderMenu>
               <h4>홈</h4>
               <h4>메뉴1</h4>
               <h4>메뉴2</h4>
-            </nav>
-          </div>
-          <nav className="header-icon">
+            </S.HeaderMenu>
+          </S.HeaderLeftWrapper>
+          <S.HeaderIcon>
             <FaGithub /> <FaInstagram /> <MdEdit />
-          </nav>
-        </header>
-        <section className="background">
-          <img src={Background} />
-          <div className="content">
+          </S.HeaderIcon>
+        </S.HeaderWrapper>
+
+        <S.BackgroundSection>
+          <img src={Background} alt="background" />
+          <S.Content>
             <h2>시대생 프론트 아자아자</h2>
-            <a
-              className="button-wrapper"
+            <S.ButtonWrapper
               href="https://uoslife.team/"
               target="_blank"
               rel="noopener noreferrer"
             >
               <FaExternalLinkAlt />
               바로가기
-            </a>
-          </div>
-        </section>
-        <section className="infbanner-wrapper">
+            </S.ButtonWrapper>
+          </S.Content>
+        </S.BackgroundSection>
+
+        <S.InfBannerWrapper>
           <h2>무한 배너</h2>
-          <ul className="infbanner">
+          <S.InfBanner>
             {[...images, ...images].map((img, idx) => (
               <li key={idx}>
-                <img src={img} />
+                <img src={img} alt={`banner-${idx}`} />
               </li>
             ))}
-          </ul>
-        </section>
-        <section className="scrollview-wrapper">
+          </S.InfBanner>
+        </S.InfBannerWrapper>
+
+        <S.ScrollViewWrapper>
           <h2>스크롤 뷰</h2>
-          <button className="left-btn" onClick={scrollLeft}>
+          <S.ScrollButton direction="left" onClick={scrollLeft}>
             ◀
-          </button>
-          <ul className="scrollview" ref={scrollRef}>
+          </S.ScrollButton>
+          <S.ScrollView ref={scrollRef}>
             {[...images, ...images].map((img, idx) => (
               <li key={idx}>
-                <img src={img} />
+                <img src={img} alt={`scroll-${idx}`} />
               </li>
             ))}
-          </ul>
-          <button className="right-btn" onClick={scrollRight}>
+          </S.ScrollView>
+          <S.ScrollButton direction="right" onClick={scrollRight}>
             ▶
-          </button>
-        </section>
+          </S.ScrollButton>
+        </S.ScrollViewWrapper>
       </div>
     </>
   );
