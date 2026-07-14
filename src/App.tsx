@@ -15,17 +15,27 @@ export default function App() {
   const [level, setLevel] = useState<Level>(1);
   const game = useGameLogic(level);
 
+  const handleNavigate = (nextPage: Page) => {
+    if (nextPage === "ranking") {
+      game.resetGame();
+    }
+    setPage(nextPage);
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <S.HeaderWrapper>
         <S.HeaderLeft>
           <S.HeaderTitle>1 to 50</S.HeaderTitle>
-          <S.NavButton active={page === "game"} onClick={() => setPage("game")}>
+          <S.NavButton
+            active={page === "game"}
+            onClick={() => handleNavigate("game")}
+          >
             게임 🎮
           </S.NavButton>
           <S.NavButton
             active={page === "ranking"}
-            onClick={() => setPage("ranking")}
+            onClick={() => handleNavigate("ranking")}
           >
             랭킹 🏆
           </S.NavButton>
