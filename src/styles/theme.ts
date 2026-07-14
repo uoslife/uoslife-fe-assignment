@@ -4,6 +4,16 @@ export const theme = {
         black: '#000000',
     },
 
+    spacing: {
+        xs: '10px',
+        sm: '18px',
+        md: '24px',
+    },
+
+    sizes: {
+        bannerItem: '250px',
+    },
+
     radii: {
         small: '4px',
         medium: '10px',
