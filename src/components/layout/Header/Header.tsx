@@ -12,7 +12,11 @@ import {
     MenuList,
 } from './Header.styles'
 
-const MENU_ITEMS = ['홈', '메뉴1', '메뉴2'] as const
+const MENU_ITEMS = [
+    { label: '홈', href: "#home" },
+    { label: '메뉴1', href: "#infinite-banner" },
+    { label: '메뉴2', href: "#horizontal-scroll" },
+] as const
 
 function Header() {
     return (
@@ -22,9 +26,11 @@ function Header() {
                     <Logo>UOSLIFE FE</Logo>
 
                     <MenuList>
-                        {MENU_ITEMS.map((menu) => (
-                            <li key={menu}>
-                                <MenuText>{menu}</MenuText>
+                        {MENU_ITEMS.map(({ label, href }) => (
+                            <li key={href}>
+                                <MenuText href={href}>
+                                    {label}
+                                </MenuText>
                             </li>
                         ))}
                     </MenuList>

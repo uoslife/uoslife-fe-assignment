@@ -42,7 +42,10 @@ function BannerImageList({
 
 function InfiniteBanner() {
     return (
-        <BannerSection aria-labelledby="infinite-banner-title">
+        <BannerSection
+            id="infinite-banner"
+            aria-labelledby="infinite-banner-title"
+        >
             <BannerHeading id="infinite-banner-title">
                 무한배너 Section
             </BannerHeading>

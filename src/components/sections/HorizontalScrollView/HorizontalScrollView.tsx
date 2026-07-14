@@ -43,7 +43,10 @@ function HorizontalScrollView() {
     }
 
     return (
-        <ScrollSection aria-labelledby="horizontal-scroll-title">
+        <ScrollSection
+            id="horizontal-scroll"
+            aria-labelledby="horizontal-scroll-title"
+        >
             <ScrollHeading id="horizontal-scroll-title">
                 가로 스크롤 Section
             </ScrollHeading>

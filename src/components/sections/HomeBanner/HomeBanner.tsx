@@ -11,7 +11,10 @@ const BANNER_LINK = 'https://uoslife.team'
 
 function HomeBanner() {
     return (
-        <BannerSection aria-labelledby="home-banner-title">
+        <BannerSection
+            id="home"
+            aria-labelledby="home-banner-title"
+        >
             <BannerContent>
                 <BannerTitle id="home-banner-title">
                     시대생 프론트 아자아자 ⚾
