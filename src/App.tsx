@@ -4,17 +4,17 @@ import InfiniteBanner from "./components/sections/InfiniteBanner/InfiniteBanner.
 import HorizontalScrollView from "./components/sections/HorizontalScrollView/HorizontalScrollView.tsx";
 
 function App() {
-  return (
-      <>
-        <Header />
+    return (
+        <>
+            <Header />
 
-        <main>
-            <HomeBanner />
-            <InfiniteBanner />
-            <HorizontalScrollView />
-        </main>
-      </>
-  )
+            <main>
+                <HomeBanner />
+                <InfiniteBanner />
+                <HorizontalScrollView />
+            </main>
+        </>
+    )
 }
 
 export default App
