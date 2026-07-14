@@ -1,5 +1,5 @@
-import styled from '@emotion/styled';
-import { keyframes } from '@emotion/react';
+import styled from "@emotion/styled";
+import { keyframes, css } from "@emotion/react";
 
 const flash = keyframes`
   0% { opacity: 1; transform: scale(1); }
@@ -11,6 +11,12 @@ const shake = keyframes`
   0%, 100% { transform: translateX(0); }
   25% { transform: translateX(-4px); }
   75% { transform: translateX(4px); }
+`;
+
+const flashKeyframes = (color: string) => keyframes`
+  0% { background-color: #ffffff; }
+  60% { background-color: #ffffff; }
+  100% { background-color: ${color}; }
 `;
 
 /* 게임판 */
@@ -36,23 +42,39 @@ export const Grid = styled.div<{ cols: number }>`
   gap: 8px;
 `;
 
-export const Cell = styled.button<{ used: boolean; isError: boolean; isFlash: boolean }>`
+export const Cell = styled.button<{
+  used: boolean;
+  isError: boolean;
+  isFlash: boolean;
+}>`
   width: 72px;
   height: 72px;
   border: none;
   border-radius: ${({ theme }) => theme.radius};
   background-color: ${({ theme, used, isError }) =>
-    isError ? theme.colors.error : used ? theme.colors.cellUsed : theme.colors.cell};
+    isError
+      ? theme.colors.error
+      : used
+      ? theme.colors.cellUsed
+      : theme.colors.cell};
   color: ${({ theme }) => theme.colors.textInverse};
   font-size: ${({ theme }) => theme.fontSizes.md};
   font-weight: 600;
-  cursor: ${({ used }) => (used ? 'default' : 'pointer')};
-  visibility: ${({ used }) => (used ? 'hidden' : 'visible')};
-  transition: background-color 0.15s ease;
-  animation: ${({ isError, isFlash }) => (isError ? `${shake} 0.3s` : isFlash ? `${flash} 0.15s` : 'none')};
+  cursor: ${({ used }) => (used ? "default" : "pointer")};
+  visibility: ${({ used }) => (used ? "hidden" : "visible")};
+  animation: ${({ theme, isError, isFlash }) =>
+    isError
+      ? css`
+          ${shake} 0.3s
+        `
+      : isFlash
+      ? css`
+          ${flashKeyframes(theme.colors.cell)} 0.3s ease-out
+        `
+      : "none"};
 
   &:hover {
-    filter: ${({ used }) => (used ? 'none' : 'brightness(1.1)')};
+    filter: ${({ used }) => (used ? "none" : "brightness(1.1)")};
   }
 `;
 

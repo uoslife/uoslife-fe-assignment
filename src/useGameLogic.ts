@@ -79,13 +79,12 @@ export function useGameLogic(level: Level): UseGameLogicResult {
     },
     [level, stopTimer]
   );
-
   const handleCellClick = useCallback(
     (cell: CellData) => {
       if (status === "finished" || cell.used || cell.value === null) return;
 
       setFlashCellId(cell.id);
-      window.setTimeout(() => setFlashCellId(null), 150);
+      window.setTimeout(() => setFlashCellId(null), 300);
 
       if (cell.value !== nextNumber) {
         setErrorCellId(cell.id);
@@ -98,18 +97,20 @@ export function useGameLogic(level: Level): UseGameLogicResult {
         startTimer();
       }
 
-      setGrid((prev) => {
-        const replacement = queue.length > 0 ? queue[0] : null;
-        return prev.map((c) =>
-          c.id === cell.id
-            ? { ...c, value: replacement, used: replacement === null }
-            : c
-        );
-      });
-      setQueue((prev) => prev.slice(1));
-
       const nextNum = nextNumber + 1;
       setNextNumber(nextNum);
+
+      window.setTimeout(() => {
+        setGrid((prev) => {
+          const replacement = queue.length > 0 ? queue[0] : null;
+          return prev.map((c) =>
+            c.id === cell.id
+              ? { ...c, value: replacement, used: replacement === null }
+              : c
+          );
+        });
+        setQueue((prev) => prev.slice(1));
+      }, 250);
 
       if (nextNum > total) {
         const finalTime =
@@ -119,7 +120,6 @@ export function useGameLogic(level: Level): UseGameLogicResult {
     },
     [status, nextNumber, queue, total, startTimer, finishGame]
   );
-
   const resetGame = useCallback(() => {
     initGame();
   }, [initGame]);
