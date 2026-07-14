@@ -1,23 +1,69 @@
-import { useState } from 'react'
-import Logo from './assets/app_icon.png'
-import './App.css'
+import { useState } from "react";
+import { ThemeProvider } from "@emotion/react";
+import * as S from "./app.styles";
+import { theme } from "./theme";
+import GamePage from "./GamePage";
+import RankingPage from "./RankingPage";
+import { LEVEL_CONFIGS, Level } from "./types";
+import { useGameLogic } from "./useGameLogic";
+import "./App.css";
 
-function App() {
-  const [count, setCount] = useState(0)
+type Page = "game" | "ranking";
+
+export default function App() {
+  const [page, setPage] = useState<Page>("game");
+  const [level, setLevel] = useState<Level>(1);
+  const game = useGameLogic(level);
+
+  const handleNavigate = (nextPage: Page) => {
+    if (nextPage === "ranking") {
+      game.resetGame();
+    }
+    setPage(nextPage);
+  };
 
   return (
-    <>
-      <div>
-          <img src={Logo} className="logo" alt="app logo" />
-      </div>
-      <h1>5기 프론트 시대생 onboarding ✈️</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-      </div>
-    </>
-  )
-}
+    <ThemeProvider theme={theme}>
+      <S.HeaderWrapper>
+        <S.HeaderLeft>
+          <S.HeaderTitle>1 to 50</S.HeaderTitle>
+          <S.NavButton
+            active={page === "game"}
+            onClick={() => handleNavigate("game")}
+          >
+            게임 🎮
+          </S.NavButton>
+          <S.NavButton
+            active={page === "ranking"}
+            onClick={() => handleNavigate("ranking")}
+          >
+            랭킹 🏆
+          </S.NavButton>
+        </S.HeaderLeft>
+        <S.HeaderRight>
+          {page === "game" && (
+            <>
+              <S.LevelSelect
+                value={level}
+                onChange={(e) => setLevel(Number(e.target.value) as Level)}
+              >
+                {Object.values(LEVEL_CONFIGS).map((cfg) => (
+                  <option key={cfg.level} value={cfg.level}>
+                    {cfg.label} {cfg.emoji}
+                  </option>
+                ))}
+              </S.LevelSelect>
+              <S.Timer>{game.elapsed.toFixed(2)}</S.Timer>
+            </>
+          )}
+        </S.HeaderRight>
+      </S.HeaderWrapper>
 
-export default App
+      {page === "game" ? (
+        <GamePage level={level} game={game} />
+      ) : (
+        <RankingPage />
+      )}
+    </ThemeProvider>
+  );
+}
