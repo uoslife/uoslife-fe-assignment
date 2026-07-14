@@ -4,11 +4,17 @@ export const theme = {
         black: '#000000',
     },
 
-    layout: {
-        header: {
-            height: '144px',
-            horizontalPadding: 'clamp(24px, 7.4vw, 152px)',
-        },
+    radii: {
+        small: '4px',
+        medium: '10px',
+    },
+
+    transitions: {
+        fast: '180ms ease',
+    },
+
+    shadows: {
+        medium: '0 8px 24px rgba(0, 0, 0, 0.28)',
     },
 
     zIndex: {

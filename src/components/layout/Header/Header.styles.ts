@@ -7,9 +7,9 @@ export const HeaderContainer = styled.header`
   z-index: ${({ theme }) => theme.zIndex.header};
 
   width: 100%;
-  height: ${({ theme }) => theme.layout.header.height};
+  height: 72px;
 
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.colors.white};
   background-color: transparent;
 `
 
@@ -20,18 +20,18 @@ export const HeaderInner = styled.div`
 
   width: 100%;
   height: 100%;
-  padding: 0 ${({ theme }) => theme.layout.header.horizontalPadding};
+  padding: 0 60px;
 `
 
 export const LeftArea = styled.div`
   display: flex;
   align-items: center;
-  gap: clamp(48px, 5vw, 104px);
+  gap: 56px;
 `
 
 export const Logo = styled.span`
   color: inherit;
-  font-size: clamp(24px, 2vw, 40px);
+  font-size: 28px;
   font-weight: 700;
   white-space: nowrap;
 `
@@ -39,7 +39,7 @@ export const Logo = styled.span`
 export const MenuList = styled.ul`
   display: flex;
   align-items: center;
-  gap: clamp(52px, 6vw, 128px);
+  gap: 48px;
 
   margin: 0;
   padding: 0;
@@ -47,24 +47,27 @@ export const MenuList = styled.ul`
 `
 
 export const MenuText = styled.span`
-    color: inherit;
-    font-size: clamp(18px, 1.6vw, 32px);
+  color: inherit;
+  font-size: 16px;
 `
 
 export const IconArea = styled.div`
   display: flex;
   align-items: center;
-  gap: clamp(14px, 1.6vw, 32px);
+  gap: 8px;
 `
 
 export const IconItem = styled.span`
   display: grid;
   place-items: center;
 
+  width: 44px;
+  height: 44px;
+
   svg {
     display: block;
-    width: clamp(22px, 1.6vw, 32px);
-    height: clamp(22px, 1.6vw, 32px);
+    width: 24px;
+    height: 24px;
   }
 `
 
@@ -72,12 +75,15 @@ export const IconLink = styled.a`
   display: grid;
   place-items: center;
 
+  width: 44px;
+  height: 44px;
+
   color: inherit;
   text-decoration: none;
 
   transition:
-    opacity 150ms ease,
-    transform 150ms ease;
+    opacity ${({ theme }) => theme.transitions.fast},
+    transform ${({ theme }) => theme.transitions.fast};
 
   &:hover {
     opacity: 0.7;
@@ -85,13 +91,13 @@ export const IconLink = styled.a`
 
   &:focus-visible {
     outline: 2px solid currentColor;
-    outline-offset: 4px;
-    border-radius: 4px;
+    outline-offset: 2px;
+    border-radius: ${({ theme }) => theme.radii.small};
   }
 
   svg {
     display: block;
-    width: clamp(22px, 1.6vw, 32px);
-    height: clamp(22px, 1.6vw, 32px);
+    width: 24px;
+    height: 24px;
   }
 `
