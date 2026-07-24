@@ -10,10 +10,6 @@ export const theme = {
         md: '24px',
     },
 
-    sizes: {
-        bannerItem: '250px',
-    },
-
     radii: {
         small: '4px',
         medium: '10px',

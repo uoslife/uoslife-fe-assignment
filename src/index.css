@@ -2,10 +2,6 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   margin: 0;
   min-width: 320px;
@@ -18,8 +14,4 @@ a {
 
 button {
   cursor: pointer;
-}
-
-main > section {
-  scroll-margin-top: 72px;
 }
