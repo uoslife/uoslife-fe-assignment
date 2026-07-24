@@ -21,6 +21,7 @@ function App() {
         nextNumber,
         status,
         feedback,
+        elapsedTimeMs,
         handleLevelChange,
         handleNumberClick,
         handleFeedbackEnd,
@@ -35,7 +36,7 @@ function App() {
             <Header
                 currentView={currentView}
                 selectedLevel={selectedLevel}
-                elapsedTimeMs={0}
+                elapsedTimeMs={elapsedTimeMs}
                 onViewChange={handleViewChange}
                 onLevelChange={handleLevelChange}
             />
