@@ -136,3 +136,15 @@ export function appendGameRecord(
         ? nextRecords
         : null
 }
+
+export function clearStoredGameRecords() {
+    try {
+        window.localStorage.removeItem(
+            GAME_RECORDS_STORAGE_KEY,
+        )
+
+        return true
+    } catch {
+        return false
+    }
+}

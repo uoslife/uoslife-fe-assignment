@@ -7,6 +7,7 @@ import {
 } from '../../../utils/formatters'
 import { getSortedGameRecords } from '../../../utils/gameRecords'
 import {
+    ClearButton,
     CompletedAtColumn,
     LevelColumn,
     RankingCaption,
@@ -22,10 +23,12 @@ import {
 
 interface RankingBoardProps {
     records: readonly GameRecord[]
+    onClear: () => void
 }
 
 function RankingBoard({
     records,
+    onClear,
 }: RankingBoardProps) {
     const sortedRecords = useMemo(
         () => getSortedGameRecords(records),
@@ -41,6 +44,15 @@ function RankingBoard({
                     랭킹{' '}
                     <span aria-hidden="true">🏆</span>
                 </RankingHeading>
+
+                <ClearButton
+                    type="button"
+                    aria-label="랭킹 기록 전체 초기화"
+                    onClick={onClear}
+                >
+                    초기화{' '}
+                    <span aria-hidden="true">🤪</span>
+                </ClearButton>
             </RankingHeader>
 
             <RankingTable>

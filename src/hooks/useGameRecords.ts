@@ -6,6 +6,7 @@ import {
 import type { GameRecord } from '../types/game'
 import {
     appendGameRecord,
+    clearStoredGameRecords,
     readGameRecords,
 } from '../utils/gameRecordsStorage'
 
@@ -27,8 +28,17 @@ export function useGameRecords() {
         [],
     )
 
+    const clearGameRecords = useCallback(() => {
+        const didClear = clearStoredGameRecords()
+
+        if (didClear) {
+            setGameRecords([])
+        }
+    }, [])
+
     return {
         gameRecords,
         saveGameRecord,
+        clearGameRecords,
     }
 }

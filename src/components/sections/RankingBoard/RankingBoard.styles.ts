@@ -32,6 +32,47 @@ export const RankingHeading = styled.h1`
     text-align: center;
 `
 
+export const ClearButton = styled.button`
+    position: absolute;
+    top: 50%;
+    right: 0;
+
+    min-width: 72px;
+    height: 28px;
+    padding: 0 ${({ theme }) => theme.spacing.xs};
+    border: 0;
+    border-radius:
+        ${({ theme }) => theme.radii.small};
+
+    color: ${({ theme }) => theme.colors.white};
+    background-color:
+        ${({ theme }) => theme.colors.primaryDark};
+
+    font-size: 12px;
+    font-weight: 700;
+
+    transform: translateY(-50%);
+
+    transition:
+        filter ${({ theme }) => theme.transitions.fast},
+        transform ${({ theme }) => theme.transitions.fast};
+
+    &:hover {
+        filter: brightness(1.15);
+    }
+
+    &:active {
+        transform:
+            translateY(-50%) scale(0.97);
+    }
+
+    &:focus-visible {
+        outline: 3px solid
+            ${({ theme }) => theme.colors.primary};
+        outline-offset: 2px;
+    }
+`
+
 export const RankingTable = styled.table`
     width: 100%;
     margin-top: ${({ theme }) => theme.spacing.sm};

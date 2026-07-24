@@ -33,6 +33,7 @@ function App() {
     const {
         gameRecords,
         saveGameRecord,
+        clearGameRecords,
     } = useGameRecords()
 
     useEffect(() => {
@@ -82,7 +83,10 @@ function App() {
                         onFeedbackEnd={handleFeedbackEnd}
                     />
                 ) : (
-                    <RankingBoard records={gameRecords} />
+                    <RankingBoard
+                        records={gameRecords}
+                        onClear={clearGameRecords}
+                    />
                 )}
             </MainContent>
 
