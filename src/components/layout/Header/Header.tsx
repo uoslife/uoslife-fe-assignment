@@ -1,6 +1,7 @@
 import type { ChangeEvent } from 'react'
 
 import type { AppView, GameLevel } from '../../../types/game'
+import { formatElapsedSeconds } from '../../../utils/formatters'
 import {
     GameControls,
     HeaderContainer,
@@ -41,7 +42,8 @@ function Header({
     onViewChange,
     onLevelChange,
 }: HeaderProps) {
-    const elapsedSeconds = (elapsedTimeMs / 1000).toFixed(2)
+    const elapsedSeconds =
+        formatElapsedSeconds(elapsedTimeMs)
 
     const handleLevelChange = (event: ChangeEvent<HTMLSelectElement>) => {
         const level = Number(event.target.value)

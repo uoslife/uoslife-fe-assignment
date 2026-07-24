@@ -5,6 +5,7 @@ import {
     RankingHeading,
     RankingSection,
 } from './App.styles'
+import GameResultModal from './components/common/GameResultModal/GameResultModal'
 import Header from './components/layout/Header/Header'
 import GameBoard from './components/sections/GameBoard/GameBoard'
 import { useNumberGame } from './hooks/useNumberGame'
@@ -22,7 +23,9 @@ function App() {
         status,
         feedback,
         elapsedTimeMs,
+        completedAt,
         handleLevelChange,
+        handleGameReset,
         handleNumberClick,
         handleFeedbackEnd,
     } = useNumberGame()
@@ -60,6 +63,15 @@ function App() {
                     </RankingSection>
                 )}
             </MainContent>
+
+            {status === 'completed' && completedAt !== null && (
+                <GameResultModal
+                    level={selectedLevel}
+                    completedAt={completedAt}
+                    elapsedTimeMs={elapsedTimeMs}
+                    onConfirm={handleGameReset}
+                />
+            )}
         </>
     )
 }

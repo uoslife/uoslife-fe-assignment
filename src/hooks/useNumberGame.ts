@@ -22,6 +22,7 @@ interface NumberGameState {
     feedbackSequence: number
     startedAtMs: number | null
     finishedAtMs: number | null
+    completedAt: string | null
 }
 
 const createInitialGameState = (
@@ -40,6 +41,7 @@ const createInitialGameState = (
         feedbackSequence: 0,
         startedAtMs: null,
         finishedAtMs: null,
+        completedAt: null,
     }
 }
 
@@ -57,8 +59,15 @@ export function useNumberGame() {
         setGameState(createInitialGameState(level))
     }
 
+    const handleGameReset = () => {
+        setGameState(
+            createInitialGameState(gameState.level),
+        )
+    }
+
     const handleNumberClick = (cellIndex: number) => {
         const clickedAtMs = performance.now()
+        const clickedAt = new Date().toISOString()
 
         setGameState((previousState) => {
             if (previousState.status === 'completed') {
@@ -119,6 +128,9 @@ export function useNumberGame() {
                 finishedAtMs: isLastNumber
                     ? clickedAtMs
                     : previousState.finishedAtMs,
+                completedAt: isLastNumber
+                    ? clickedAt
+                    : previousState.completedAt,
                 feedbackSequence: nextFeedbackSequence,
                 feedback: {
                     id: nextFeedbackSequence,
@@ -150,7 +162,9 @@ export function useNumberGame() {
         status: gameState.status,
         feedback: gameState.feedback,
         elapsedTimeMs,
+        completedAt: gameState.completedAt,
         handleLevelChange,
+        handleGameReset,
         handleNumberClick,
         handleFeedbackEnd,
     }

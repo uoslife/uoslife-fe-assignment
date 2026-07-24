@@ -10,6 +10,7 @@ export const theme = {
         backCell: '#162B4B',
         success: '#2E7D32',
         error: '#C62828',
+        modalBackdrop: 'rgba(17, 24, 39, 0.78)',
     },
 
     spacing: {
@@ -42,6 +43,7 @@ export const theme = {
 
     zIndex: {
         header: 100,
+        modal: 1000,
     },
 } as const
 
