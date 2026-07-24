@@ -10,25 +10,6 @@ export const MainContent = styled.main`
     background-color: ${({ theme }) => theme.colors.background};
 `
 
-export const GameSection = styled.section`
-    width: 100%;
-    max-width: ${({ theme }) => theme.sizes.contentMaxWidth};
-    margin: 0 auto;
-
-    text-align: center;
-`
-
-export const NextNumberHeading = styled.h1`
-    margin: 0;
-
-    color: ${({ theme }) => theme.colors.text};
-    font-size: 18px;
-
-    strong {
-        color: ${({ theme }) => theme.colors.primary};
-    }
-`
-
 export const RankingSection = styled.section`
     width: min(100%, 580px);
     margin: ${({ theme }) => theme.spacing.sm} auto 0;

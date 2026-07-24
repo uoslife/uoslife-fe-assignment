@@ -10,6 +10,7 @@ export const theme = {
     },
 
     spacing: {
+        xxs: '5px',
         xs: '10px',
         sm: '18px',
         md: '24px',
@@ -19,6 +20,7 @@ export const theme = {
     sizes: {
         headerHeight: '60px',
         contentMaxWidth: '960px',
+        gameCell: '72px',
     },
 
     radii: {
