@@ -7,6 +7,9 @@ export const theme = {
         background: '#E1EBFF',
         surface: '#FFFFFF',
         text: '#111827',
+        backCell: '#162B4B',
+        success: '#2E7D32',
+        error: '#C62828',
     },
 
     spacing: {
