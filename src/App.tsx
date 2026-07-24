@@ -1,4 +1,7 @@
-import { useState } from 'react'
+import {
+    useEffect,
+    useState,
+} from 'react'
 
 import {
     MainContent,
@@ -8,6 +11,7 @@ import {
 import GameResultModal from './components/common/GameResultModal/GameResultModal'
 import Header from './components/layout/Header/Header'
 import GameBoard from './components/sections/GameBoard/GameBoard'
+import { useGameRecords } from './hooks/useGameRecords'
 import { useNumberGame } from './hooks/useNumberGame'
 import type { AppView } from './types/game'
 
@@ -29,6 +33,28 @@ function App() {
         handleNumberClick,
         handleFeedbackEnd,
     } = useNumberGame()
+    const { saveGameRecord } = useGameRecords()
+
+    useEffect(() => {
+        if (
+            status !== 'completed'
+            || completedAt === null
+        ) {
+            return
+        }
+
+        saveGameRecord({
+            completedAt,
+            level: selectedLevel,
+            elapsedTimeMs,
+        })
+    }, [
+        completedAt,
+        elapsedTimeMs,
+        saveGameRecord,
+        selectedLevel,
+        status,
+    ])
 
     const handleViewChange = (view: AppView) => {
         setCurrentView(view)
