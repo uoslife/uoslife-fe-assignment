@@ -3,14 +3,11 @@ import {
     useState,
 } from 'react'
 
-import {
-    MainContent,
-    RankingHeading,
-    RankingSection,
-} from './App.styles'
+import { MainContent } from './App.styles'
 import GameResultModal from './components/common/GameResultModal/GameResultModal'
 import Header from './components/layout/Header/Header'
 import GameBoard from './components/sections/GameBoard/GameBoard'
+import RankingBoard from './components/sections/RankingBoard/RankingBoard'
 import { useGameRecords } from './hooks/useGameRecords'
 import { useNumberGame } from './hooks/useNumberGame'
 import type { AppView } from './types/game'
@@ -33,7 +30,10 @@ function App() {
         handleNumberClick,
         handleFeedbackEnd,
     } = useNumberGame()
-    const { saveGameRecord } = useGameRecords()
+    const {
+        gameRecords,
+        saveGameRecord,
+    } = useGameRecords()
 
     useEffect(() => {
         if (
@@ -82,11 +82,7 @@ function App() {
                         onFeedbackEnd={handleFeedbackEnd}
                     />
                 ) : (
-                    <RankingSection aria-labelledby="ranking-heading">
-                        <RankingHeading id="ranking-heading">
-                            랭킹 <span aria-hidden="true">🏆</span>
-                        </RankingHeading>
-                    </RankingSection>
+                    <RankingBoard records={gameRecords} />
                 )}
             </MainContent>
 
