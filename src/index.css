@@ -1,3 +1,30 @@
+@font-face {
+  font-family: 'TossFace';
+  src: url('./assets/fonts/TossFaceFontMac.ttf') format('truetype');
+  font-display: swap;
+
+  unicode-range:
+    U+00A9,
+    U+00AE,
+    U+200D,
+    U+203C,
+    U+2049,
+    U+20E3,
+    U+2122,
+    U+2139,
+    U+2190-21FF,
+    U+2300-23FF,
+    U+25A0-27BF,
+    U+2934-2935,
+    U+2B00-2BFF,
+    U+3030,
+    U+303D,
+    U+3297,
+    U+3299,
+    U+FE0E-FE0F,
+    U+1F000-1FFFF;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -5,10 +32,21 @@
 body {
   margin: 0;
   min-width: 320px;
+
+  font-family:
+    'TossFace',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+}
+
+#root {
+  min-height: 100vh;
 }
 
 button,
-a {
+select {
   font: inherit;
 }
 
